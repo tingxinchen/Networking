@@ -2,9 +2,7 @@
 
 TcpFileSender::TcpFileSender(QWidget *parent)
     : QDialog(parent)
-{}
-
-TcpFileSender::~TcpFileSender() {
+{
     loadSize = 1024*4;
     totalBytes = 0;
     bytesWritten = 0;
@@ -33,6 +31,10 @@ TcpFileSender::~TcpFileSender() {
     connect(&tcpClient, SIGNAL (connected()), this, SLOT (startTransfer()));
     connect(&tcpClient, SIGNAL (bytesWritten (qint64)), this, SLOT (updateClientProgress (qint64)));
     connect (quitButton, SIGNAL (clicked()), this, SLOT (close()));
+}
+
+TcpFileSender::~TcpFileSender() {
+
 }
 void TcpFileSender::start()
 {
@@ -83,3 +85,7 @@ void TcpFileSender::openFile()
     fileName = QFileDialog::getOpenFileName(this);
     if (!fileName.isEmpty()) startButton->setEnabled(true);
 }
+
+
+
+

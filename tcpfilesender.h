@@ -9,7 +9,7 @@ class TcpFileSender : public QDialog
     Q_OBJECT
 
 public:
-    explicit TcpFileSender(QWidget *parent = nullptr);
+    explicit TcpFileSender(QWidget *parent = 0);
     ~TcpFileSender();
 
 public slots:
@@ -25,8 +25,8 @@ private:
     QPushButton      *quitButton;
     QPushButton      *openButton;
     QDialogButtonBox *buttonBox;
-
     QTcpSocket       tcpClient;
+
     qint64           totalBytes;
     qint64           bytesWritten;
     qint64           bytesToWrite;
